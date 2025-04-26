@@ -1,0 +1,53 @@
+/* --------- Landing Page Styles --------- */
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .landing-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #1f3d7a;
+  }
+  
+  .landing-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #3b82f6;
+    color: #fff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+  }
+  
+  /* Ensure the rest of your pages’ .container remains centered */
+  .container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: #e8fafe;
+    padding: 30px;
+    border: 3px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+  

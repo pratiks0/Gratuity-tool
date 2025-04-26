@@ -1,0 +1,90 @@
+/* layout */
+body {
+    margin: 0;
+    padding: 0;
+    background: #f4f7f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  /* headings */
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  /* form elements */
+  form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+  }
+  
+  input[type="file"],
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccd0d5;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+  
+  /* button */
+  button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #2980b9;
+  }
+  
+  /* result & error messages */
+  .result,
+  .error {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .result {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .error {
+    background: #ffebee;
+    color: #c62828;
+  }
+  
+

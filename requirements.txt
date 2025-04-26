@@ -1,0 +1,5 @@
+Flask
+pandas
+openpyxl
+werkzeug
+python-dotenv

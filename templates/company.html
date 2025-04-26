@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Company-Wide Gratuity Report</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Company-Wide Gratuity Report</h2>
+    <form action="{{ url_for('company') }}"
+          method="post"
+          enctype="multipart/form-data">
+      <label>Upload Excel File</label>
+      <input type="file" name="excel_file" required>
+
+      <label>Target Year</label>
+      <input type="number" name="target_year" required>
+
+      <label>Salary Increment %</label>
+      <input type="number" name="inc_pct" step="0.1" value="10" required>
+
+      <label>Discount Rate %</label>
+      <input type="number" name="disc_pct" step="0.1" value="6.5" required>
+
+      <button type="submit">Generate Report</button>
+    </form>
+
+    {% if table_html %}
+      <h3>Gratuity by Employee</h3>
+      <div class="table-wrapper">{{ table_html|safe }}</div>
+
+      <p class="result"><strong>Total Gratuity:</strong> ₹{{ total }}</p>
+
+      {% if download_fn %}
+        <a class="button"
+           href="{{ url_for('download', filename=download_fn) }}">
+          📥 Download Excel Report
+        </a>
+      {% endif %}
+    {% endif %}
+  </div>
+</body>
+</html>

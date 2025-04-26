@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gratuity & Pension Calculator</title>
+  <link rel="stylesheet" href="/static/landing.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Gratuity & Pension Tool</h1>
+    <div class="buttons">
+      <a class="btn" href="{{ url_for('individual') }}">
+        Individual Calculator
+      </a>
+      <a class="btn" href="{{ url_for('company') }}">
+        Company-Wide Report
+      </a>
+    </div>
+  </div>
+</body>
+</html>

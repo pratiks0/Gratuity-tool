@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Individual Gratuity Calculator</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Single-Employee Gratuity</h2>
+    <form action="{{ url_for('individual') }}"
+          method="post"
+          enctype="multipart/form-data">
+      <label>Upload Excel File</label>
+      <input type="file" name="excel_file" required>
+
+      <label>Employee ID</label>
+      <input type="text" name="emp_id" required>
+
+      <label>Target Year</label>
+      <input type="number" name="target_year" required>
+
+      <label>Salary Increment %</label>
+      <input type="number" name="inc_pct" step="0.1" value="10" required>
+
+      <label>Discount Rate %</label>
+      <input type="number" name="disc_pct" step="0.1" value="6.5" required>
+
+      <button type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+      <p class="result">Result: ₹{{ result }}</p>
+      {% if result == 0 %}
+        <p class="error">
+          Gratuity does not apply (employee must have ≥ 5 years’ service).
+        </p>
+      {% endif %}
+    {% elif error %}
+      <p class="error">Error: {{ error }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>
