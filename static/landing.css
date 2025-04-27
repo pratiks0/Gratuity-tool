@@ -341,3 +341,20 @@ h1::after {
   left: 80%;
   animation-delay: 8s;
 }
+
+@media (max-width: 639px) {
+  .buttons .btn {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .particle {
+    transform: scale(0.5);
+  }
+
+  .info-badge {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.65rem;
+  }
+}
