@@ -3,29 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Company-Wide Gratuity Report</title>
-  <link rel="stylesheet"
-        href="/static/styles.css">
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
   <div class="container">
     <h2>Company-Wide Gratuity Report</h2>
-    <form action="{{ url_for('company') }}"
-          method="post"
-          enctype="multipart/form-data">
-      <label>Upload Excel File</label>
-      <input type="file" name="excel_file" required>
+    <form action="{{ url_for('company') }}" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>Upload Excel File</label>
+        <input type="file" name="excel_file" required>
+      </div>
 
-      <label>Target Year</label>
-      <input type="number" name="target_year" required>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Target Year</label>
+          <input type="number" name="target_year" required>
+        </div>
+        <div class="form-group">
+          <label>Retirement Age</label>
+          <input type="number" name="retirement_age" step="1" value="60" required>
+        </div>
+      </div>
 
-      <label>Salary Increment %</label>
-      <input type="number" name="inc_pct" step="0.1" value="10" required>
-
-      <label>Discount Rate %</label>
-      <input type="number" name="disc_pct" step="0.1" value="6.5" required>
-
-      <label>Retirement Age</label>
-      <input type="number" name="retirement_age" step="1" value="60" required>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Salary Increment %</label>
+          <input type="number" name="inc_pct" step="0.1" value="10" required>
+        </div>
+        <div class="form-group">
+          <label>Discount Rate %</label>
+          <input type="number" name="disc_pct" step="0.1" value="6.5" required>
+        </div>
+      </div>
 
       <button type="submit">Generate Report</button>
     </form>
@@ -37,12 +46,11 @@
       <p class="result"><strong>Total Gratuity:</strong> ₹{{ total }}</p>
 
       {% if download_fn %}
-        <a class="button"
-           href="{{ url_for('download', filename=download_fn) }}">
+        <a class="button" href="{{ url_for('download', filename=download_fn) }}">
           📥 Download Excel Report
         </a>
       {% endif %}
     {% endif %}
   </div>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'936dbbf73c2d44e3',t:'MTc0NTc1MDc2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
