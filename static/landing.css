@@ -1,53 +1,343 @@
-/* --------- Landing Page Styles --------- */
+/* Reset and Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-.landing-container {
-    display: flex;
-    flex-direction: column;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary-dark: #1a365d;
+  --primary: #2a4365;
+  --primary-light: #3182ce;
+  --accent: #eab308;
+  --accent-light: #fcd34d;
+  --text-dark: #1e293b;
+  --text-light: #f8fafc;
+  --background: #f1f5f9;
+  --container-bg: rgba(255, 255, 255, 0.95);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-dark);
+  background: var(--background);
+  overflow-x: hidden;
+}
+
+/* Animated Background */
+body {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Container Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--container-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: var(--accent);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  line-height: 1.2;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Button Styles */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 1rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: var(--text-light);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: var(--transition);
+  position: relative;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 10px;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.btn:hover {
+  color: var(--text-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation for buttons */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.buttons .btn:nth-child(1) {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.buttons .btn:nth-child(2) {
+  animation: fadeInUp 0.6s 0.2s ease-out forwards;
+  animation-fill-mode: both;
+}
+
+/* Add finance-themed decoration */
+.container::after {
+  content: "";
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 120px;
+  height: 120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a365d' stroke-width='0.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='22 7 13.5 15.5 8.5 10.5 2 17'%3E%3C/polyline%3E%3Cpolyline points='16 7 22 7 22 13'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .container {
+    padding: 3rem;
+    margin: 2rem auto;
+    min-height: calc(100vh - 4rem);
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  .buttons {
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .landing-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #1f3d7a;
-  }
-  
-  .landing-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
   }
   
   .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: #3b82f6;
-    color: #fff;
-    font-size: 1.1rem;
-    text-decoration: none;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 639px) {
+  html, body {
+    font-size: 14px;
   }
   
-  .btn:hover {
-    background-color: #2563eb;
-    transform: translateY(-2px);
-  }
-  
-  /* Ensure the rest of your pages’ .container remains centered */
   .container {
-    max-width: 600px;
-    margin: 60px auto;
-    background: #e8fafe;
-    padding: 30px;
-    border: 3px solid #000000;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 2rem 1.5rem;
   }
   
+  h1 {
+    font-size: 2rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  h1::after {
+    width: 60px;
+    height: 3px;
+  }
+  
+  .btn {
+    padding: 0.9rem 1.5rem;
+  }
+}
+
+/* Additional decoration */
+.container {
+  position: relative;
+}
+
+.info-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--primary-dark);
+  color: var(--text-light);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.info-badge::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+/* Subtle particles effect for background character */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 15s infinite;
+}
+
+.particle:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  width: 60px;
+  height: 60px;
+  top: 70%;
+  left: 80%;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 40%;
+  left: 40%;
+  animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+  width: 50px;
+  height: 50px;
+  top: 80%;
+  left: 20%;
+  animation-delay: 6s;
+}
+
+.particle:nth-child(5) {
+  width: 70px;
+  height: 70px;
+  top: 20%;
+  left: 80%;
+  animation-delay: 8s;
+}

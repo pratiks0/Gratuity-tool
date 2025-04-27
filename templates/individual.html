@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Individual Gratuity Calculator</title>
-  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet"
+        href="/static/styles.css">
 </head>
 <body>
   <div class="container">
@@ -26,6 +27,9 @@
       <label>Discount Rate %</label>
       <input type="number" name="disc_pct" step="0.1" value="6.5" required>
 
+      <label>Retirement Age</label>
+      <input type="number" name="retirement_age" step="1" value="60" required>
+
       <button type="submit">Calculate</button>
     </form>
 
@@ -33,7 +37,7 @@
       <p class="result">Result: ₹{{ result }}</p>
       {% if result == 0 %}
         <p class="error">
-          Gratuity does not apply (employee must have ≥ 5 years’ service).
+          Gratuity does not apply (service < 5 years or retired).
         </p>
       {% endif %}
     {% elif error %}

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Company-Wide Gratuity Report</title>
-  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet"
+        href="/static/styles.css">
 </head>
 <body>
   <div class="container">
@@ -22,6 +23,9 @@
 
       <label>Discount Rate %</label>
       <input type="number" name="disc_pct" step="0.1" value="6.5" required>
+
+      <label>Retirement Age</label>
+      <input type="number" name="retirement_age" step="1" value="60" required>
 
       <button type="submit">Generate Report</button>
     </form>
